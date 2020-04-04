@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿
 namespace Lab2.Models
 {
+    using System.ComponentModel.DataAnnotations;
     public enum TypeList
     {
         Adriana,
@@ -15,10 +12,18 @@ namespace Lab2.Models
     }
     public class Friend
     {
+        [Key]
         public int FriendId { get; set; }
+        [Required]
+        [Display(Name = "Nombre Completo")]
+        [StringLength(50, MinimumLenght = 5)]
         public string Name { get; set; }
         public TypeList List { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Display]
+        [dataType(DataType.Date)]
+        [DisplayFormat(DataFormatString= "{0:dd/MM/yyyy}", ApplyFormatInEditMode=true)]
         public int Birthdate { get; set; }
 
     }
